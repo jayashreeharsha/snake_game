@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.game-header {
+    margin-bottom: 20px;
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    color: #4a5568;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    background: #f7fafc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.game-board-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#gameBoard {
+    border: 3px solid #4a5568;
+    border-radius: 10px;
+    background: #2d3748;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.game-controls {
+    margin: 20px 0;
+}
+
+.difficulty-selector {
+    margin-bottom: 15px;
+}
+
+.difficulty-selector label {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+.difficulty-selector select {
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    color: #4a5568;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.difficulty-selector select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.control-info p {
+    margin-bottom: 15px;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 0 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#soundToggle {
+    background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+    box-shadow: 0 4px 15px rgba(237, 137, 54, 0.4);
+}
+
+#soundToggle:hover {
+    box-shadow: 0 6px 20px rgba(237, 137, 54, 0.6);
+}
+
+#soundToggle.muted {
+    background: #718096;
+    box-shadow: 0 4px 15px rgba(113, 128, 150, 0.4);
+}
+
+/* Snake animation effects */
+@keyframes snakeGlow {
+    0% { box-shadow: 0 0 5px rgba(72, 187, 120, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(72, 187, 120, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(72, 187, 120, 0.5); }
+}
+
+/* Food pulse animation */
+@keyframes foodPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.game-over {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.98);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    z-index: 1000;
+}
+
+.game-over h2 {
+    color: #e53e3e;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.game-over p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #4a5568;
+}
+
+#playAgainBtn {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+}
+
+#playAgainBtn:hover {
+    box-shadow: 0 6px 20px rgba(72, 187, 120, 0.6);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .game-header h1 {
+        font-size: 2rem;
+    }
+    
+    #gameBoard {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .score-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        margin: 2px;
+    }
+}
